@@ -1,0 +1,61 @@
+composer create-project laravel/laravel accessibility-issues
+
+dbaccessibilityissues
+
+create table tbDevice(
+    idDevice int primary key AUTO_INCREMENT,
+    device varchar(500)
+);
+
+create table tbIssue(
+	idIssue int primary key AUTO_INCREMENT,
+	creationDate date,
+	deleted tinyint,
+	title varchar(255),
+	description varchar(5000),
+	appFieldId varchar(500),
+	appFieldName varchar(500),	
+	printScreen varchar(5000),
+	idDevice int,
+	devideModel varchar(500),
+	version varchar(255),
+	appTitle varchar(255),
+	linkApp varchar(1000),
+	FOREIGN KEY (idDevice) references tbDevice(idDevice)
+);
+
+create table tbAssessment(
+	idAssessment int primary key auto_increment,
+	creationDate date,
+	deleted tinyint,
+	idIssue int,
+	problem tinyint,
+	justification varchar(5000),
+	FOREIGN KEY (idIssue) references tbIssue(idIssue)
+);
+
+create table tbUser(
+	idUser int primary key AUTO_INCREMENT,
+	nameUser varchar(50),
+	emailUser varchar(80),
+	passUser varchar(8)
+);
+
+create table tbProblemFound(
+	idProbleFound int primary key AUTO_INCREMENT,
+	idIssue int,
+	FOREIGN KEY (idIssue) references tbIssue(idIssue)	
+);
+
+
+insert into tbdevice values (null, 'Android');
+insert into tbdevice values (null, 'iOS');
+
+insert into tbIssues values(null,'2023-01-08',0,'título do problema','descrição do problema','print',1,'versão','título do app','link do app');
+
+
+drop table tbUser;
+drop table tbProblemFound;
+drop table tbassessment;
+drop table tbissue;
+drop table tbdevice;
