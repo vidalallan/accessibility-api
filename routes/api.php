@@ -27,3 +27,4 @@ Route::post('/issue','App\Http\Controllers\IssueController@store');
 Route::get('/assessment','App\Http\Controllers\AssessmentController@index');
 Route::post('/assessment','App\Http\Controllers\AssessmentController@store');
 Route::get('/assessment/{id}','App\Http\Controllers\AssessmentController@showIdIssue');
+Route::get('/assessment/{id}/problem/{problem}','App\Http\Controllers\AssessmentController@showIdIssueProblem');

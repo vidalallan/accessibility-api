@@ -34,9 +34,11 @@ class AssessmentController extends Controller
     }
 
     public function showIdIssueProblem(Request $request)
-    {
-        $assessment = Assessment::where('idIssue', $request->id)->get();
-        return $assessment;
+    {     
+        $assessment = Assessment::where('idIssue', $request->id)
+                                ->where('problem',$request->problem)    
+                                ->get();
+        return $assessment;    
     }
 
 }
