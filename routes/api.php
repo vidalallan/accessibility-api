@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,3 +29,11 @@ Route::get('/assessment','App\Http\Controllers\AssessmentController@index');
 Route::post('/assessment','App\Http\Controllers\AssessmentController@store');
 Route::get('/assessment/{id}','App\Http\Controllers\AssessmentController@showIdIssue');
 Route::get('/assessment/{id}/problem/{problem}','App\Http\Controllers\AssessmentController@showIdIssueProblem');
+
+Route::get('/user','App\Http\Controllers\UserController@index');
+Route::post('/user','App\Http\Controllers\UserController@store');
+
+Route::post('/login','App\Http\Controllers\LoginController@login');
+Route::get('/logout','App\Http\Controllers\LoginController@logout');
+    
+ 
