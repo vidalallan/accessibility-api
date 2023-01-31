@@ -118,4 +118,23 @@ class AssessmentController extends Controller
         return $assessment;
     }
 
+    public function countYesNoByDeviceModel(Request $request){        
+
+        $sql = 'SELECT i.idIssue, i.title, i.idDevice, d.device, i.devideModel, ';
+        $sql .= 'SUM(case WHEN(a.problem=1)THEN 1 ELSE 0 END) AS "yes", ';
+        $sql .= 'SUM(case when(a.problem=0)THEN 1 ELSE 0 END) AS "no", ';        
+        $sql .= 'count(i.idIssue) "total"';
+        $sql .= 'from tbassessment a ';
+        $sql .= 'inner join tbissue i ';
+        $sql .= 'on a.idIssue = i.idIssue ';
+        $sql .= 'inner join tbDevice d ';
+        $sql .= 'on i.idDevice = d.idDevice ';
+        $sql .= 'where i.devideModel = ' . $request->device_model;
+        $sql .= ' group by a.idIssue';
+
+        $assessment = DB::select($sql);
+
+        return $assessment;
+    }
+
 }
