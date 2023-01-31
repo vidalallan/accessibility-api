@@ -20,6 +20,14 @@ class IssueController extends Controller
         return $issues;
     }
 
+    public function countIssue(){
+        $issue = new Issue();
+        
+        return response()->json([
+            'count'=> $issue::count(),
+            'code'=>200]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -25,7 +25,6 @@ class DeviceController extends Controller
             echo $device ->device . "<br />";
         }
         */
-
     }
 
     /**
@@ -49,6 +48,14 @@ class DeviceController extends Controller
         $device = new Device();
         $device->device = $request->device;
         $device ->save();        
+    }
+
+    public function countDevice(){
+        $device = new Device();
+        
+        return response()->json([
+            'count'=> $device::count(),
+            'code'=>200]);
     }
 
     /**
