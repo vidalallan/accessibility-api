@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Issue;
+use App\Models\Device;
+use App\Models\Pattern;
 
 class IssueController extends Controller
 {
@@ -15,9 +17,17 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
+        $issues = Issue::all();        
 
         return $issues;
+    }
+
+    public function indexView(){
+        $issues = $this->index();
+        $devices = Device::all();
+        $patterns = Pattern::all();
+
+        return view('issue.index', compact('issues', 'devices','patterns'));        
     }
 
     public function countIssue(){
@@ -54,16 +64,63 @@ class IssueController extends Controller
         $issue -> description = $request-> description;
         $issue -> appFieldId = $request->appFieldId;
         $issue -> appFieldName = $request->appFieldName;
-        $issue -> printScreen = $request-> printScreen;
+
+        $image = $request->file('printScreen');
+        $path = $image->store('images','public');
+
+        $issue -> printScreen = $path;
+
+        $issue -> idDevice = $request-> idDevice;
+
+        $issue -> idPattern = $request-> idPattern;
+        $issue -> patternVersion = $request-> patternVersion;
+        $issue -> patternVersionDetailts = $request-> patternVersionDetailts;
+
+        $issue -> devideModel = $request-> devideModel;        
+        $issue -> version = $request-> version;
+        $issue -> appTitle = $request-> appTitle;
+        $issue -> linkApp = $request-> linkApp;  
+        
+        $issue -> origin = $request-> origin;
+
+        $issue ->save();
+    }
+
+
+    public function storeView(Request $request)
+    {
+        $issue = new Issue();
+        
+        $issue -> creationDate = date('Y-m-d');
+        $issue -> deleted = 0;
+        $issue -> title = $request-> title;
+        $issue -> description = $request-> description;
+        $issue -> appFieldId = $request->appFieldId;
+        $issue -> appFieldName = $request->appFieldName;
+
+        //$issue -> printScreen = $request-> printScreen;
+        $image = $request->file('printScreen');
+        $path = $image->store('images','public');
+
+        $issue -> printScreen = $path;
+
+        $issue -> idPattern = $request-> idPattern;
+        $issue -> patternVersion = $request-> patternVersion;
+        $issue -> patternVersionDetailts = $request-> patternVersionDetailts;
+
         $issue -> idDevice = $request-> idDevice;
         $issue -> devideModel = $request-> devideModel;        
         $issue -> version = $request-> version;
         $issue -> appTitle = $request-> appTitle;
         $issue -> linkApp = $request-> linkApp;
 
+        $issue -> origin = "web";
+
         //'appFieldId','appFieldName','devideModel'
 
         $issue ->save();
+
+        return redirect('/questao');
     }
 
     /**

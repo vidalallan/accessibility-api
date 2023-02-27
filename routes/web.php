@@ -16,3 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/manager', function () {
+    return view('manager');
+});
+
+Route::get('/dispositivo','App\Http\Controllers\DeviceController@indexView');
+Route::post('/dispositivo','App\Http\Controllers\DeviceController@storeView');
+Route::get('/dispositivo/{id}','App\Http\Controllers\DeviceController@destroyView');
+
+
+Route::get('/questao','App\Http\Controllers\IssueController@indexView');
+Route::post('/questao','App\Http\Controllers\IssueController@storeView');
+
+
+Route::get('/avaliacao','App\Http\Controllers\AssessmentController@indexView');
+

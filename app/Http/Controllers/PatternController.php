@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Device;
+use App\Models\Pattern;
 
-class DeviceController extends Controller
+class PatternController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,24 +15,9 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::all();
-
-        return $devices;
-
-        /*
-        foreach($devices as $device){
-            echo $device ->idDevice . " ";
-            echo $device ->device . "<br />";
-        }
-        */
+        $patterns = Pattern::all();
+        return $patterns;
     }
-
-
-    public function indexView(){
-        $devices = $this->index();
-        return view('device.index')->with('devices',$devices);
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -52,37 +37,10 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        $device = new Device();
-        $device->device = $request->device;
-        $device ->save();
-        
-        
-    }
-
-    public function storeView(Request $request){
-
-        $device = new Device();
-        $device->device = $request->device;
-        $device ->save();
-
-        return redirect('/dispositivo');
-
-    }
-
-    public function countDevice(){
-        $device = new Device();
-        
-        return response()->json([
-            'count'=> $device::count(),
-            'code'=>200]);
-    }
-
-    public static function  countDeviceView(){
-        $device = new Device();
-
-        $total = $device::count();
-        
-        return $total;               
+        $pattern = new Pattern();        
+        $pattern -> pattern = $request->pattern;
+        $pattern -> deleted = 0;
+        $pattern -> save();
     }
 
     /**
@@ -127,16 +85,6 @@ class DeviceController extends Controller
      */
     public function destroy($id)
     {
-        $device = Device::where('idDevice',$id)->delete();
-        
-        return response()->json([
-            'message'=> "Device removed",
-            'code'=>200]);
-    }
-
-    public function destroyView($id)
-    {
-        $device = Device::where('idDevice',$id)->delete();
-        return redirect('/dispositivo'); 
+        //
     }
 }

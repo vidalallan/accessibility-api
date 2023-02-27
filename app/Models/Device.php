@@ -11,7 +11,7 @@ class Device extends Model
 
     protected $table = "tbDevice";
 
-    protected $fillable = ['idDevice','device'];
+    protected $fillable = ['idDevice','device','deleted'];
 
     public $timestamps = false;
 }

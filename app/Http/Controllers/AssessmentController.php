@@ -16,6 +16,12 @@ class AssessmentController extends Controller
         return $assessment;
     }
 
+    public function indexView()
+    {        
+        $assessments = $this->index();
+        return view('assessment.index')->with('assessments',$assessments);
+    }
+
     public function store(Request $request)
     {
         $assessment = new Assessment();

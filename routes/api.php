@@ -24,8 +24,14 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/device','App\Http\Controllers\DeviceController@index');
     Route::post('/device','App\Http\Controllers\DeviceController@store');
     Route::get('/count/device','App\Http\Controllers\DeviceController@countDevice');
+    Route::delete('/device/{id}','App\Http\Controllers\DeviceController@destroy');
 
 });
+
+
+Route::get('/pattern','App\Http\Controllers\PatternController@index');
+Route::post('/pattern','App\Http\Controllers\PatternController@store');
+
 
 Route::get('/issue','App\Http\Controllers\IssueController@index');
 Route::post('/issue','App\Http\Controllers\IssueController@store');
