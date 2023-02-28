@@ -23,7 +23,7 @@ create table tbIssue(
 	appTitle varchar(255),	
 	appFieldId varchar(500),
 	appFieldName varchar(500),	
-	printScreen varchar(5000),
+	printScreen varchar(2000),
 	idDevice int,
 	idPattern int,
 	patternVersion varchar(255),

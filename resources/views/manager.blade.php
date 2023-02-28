@@ -16,15 +16,23 @@
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li> <a href="/manager"> Gerenciador </a> </li>
-            <li> <a href="/dispositivo"> Dispositivo </a> </li>
-            <li> <a href="/questao"> Questão </a> </li>
-            <li> <a href="/avaliacao"> Avaliação </a> </li>
+    <header>
 
-        </ul>
-    </nav>
+        <section class="container-fluid" style="max-width: 60%;margin: 0 auto;">   
+            <h1> Dashboard </h1>
+        </section>
+
+        <nav class="container-fluid" style="max-width: 60%;margin: 0 auto;">
+            <ul>
+                <li> <a href="/manager"> Dashboard </a> </li>
+                <li> <a href="/dispositivo"> Dispositivo </a> </li>
+                <li> <a href="/questao"> Questão </a> </li>
+                <li> <a href="/avaliacao"> Avaliação </a> </li>
+                <li> <a href="/padrao"> Padrão </a> </li>
+            </ul>
+        </nav>
+
+    </header>
     
 </body>
 </html>

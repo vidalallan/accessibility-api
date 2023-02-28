@@ -19,6 +19,11 @@ class PatternController extends Controller
         return $patterns;
     }
 
+    public function indexView(){        
+        $patterns = Pattern::all();
+        return view('pattern.index', compact('patterns'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

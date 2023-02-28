@@ -32,4 +32,9 @@ Route::post('/questao','App\Http\Controllers\IssueController@storeView');
 
 
 Route::get('/avaliacao','App\Http\Controllers\AssessmentController@indexView');
+Route::get('/todas-avaliacoes-sn','App\Http\Controllers\AssessmentController@countYesNoIdIssueView');
+
+
+
+Route::get('/padrao','App\Http\Controllers\PatternController@indexView');
 
